@@ -9,6 +9,7 @@
     />
     <title>다음 장 — 오늘을 적고, 내일을 정해요</title>
     <link rel="stylesheet" href="./styles.css" />
+    <script src="./config.js" defer></script>
     <script src="./app.js" defer></script>
   </head>
   <body>
@@ -22,9 +23,9 @@
 
       <div class="header-meta">
         <p id="today-date" class="today-date"></p>
-        <span class="connection-status">
+        <span id="connection-status" class="connection-status">
           <span class="status-dot" aria-hidden="true"></span>
-          프론트엔드 준비 중
+          <span id="connection-status-text">백엔드 연결 준비</span>
         </span>
       </div>
     </header>
@@ -106,12 +107,12 @@
               aria-describedby="diary-help diary-error"
             ></textarea>
             <p id="diary-help" class="privacy-note">
-              지금은 서버에 전송하거나 저장하지 않으며, 새로고침하면 내용이 사라집니다.
+              기록은 Cloud Run 백엔드를 통해 Firestore에 저장됩니다.
             </p>
             <p id="diary-error" class="field-error" role="alert"></p>
 
-            <button class="primary-button" type="submit">
-              오늘 기록 마치기
+            <button id="diary-submit" class="primary-button" type="submit">
+              <span id="diary-submit-label">오늘 기록 저장하기</span>
               <span aria-hidden="true">↗</span>
             </button>
           </form>

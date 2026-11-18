@@ -1,0 +1,8 @@
+{
+  "name": "1111webdiary-frontend",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "build:local": "node --env-file=.env scripts/build.mjs"
+  }
+}

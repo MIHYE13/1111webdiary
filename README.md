@@ -8,24 +8,38 @@
 - 오늘 할 일 추가, 완료, 삭제
 - 일기 입력 및 글자 수 표시
 - 일기 입력 검증과 프론트엔드 완료 상태 표시
+- Cloud Run 백엔드로 일기와 오늘 할 일 전송
+- Firestore 저장 성공·실패 상태 표시와 중복 제출 방지
 - 키보드 포커스, 스크린 리더 안내, 모션 감소 설정 지원
 
 ## 아직 구현하지 않은 범위
 
-- 백엔드 요청
-- OpenAI 에이전트 호출 및 실제 챗봇 대화
-- Firebase Firestore 저장
+- AI 대화 기능
 - 이메일 발송
-- Netlify 배포 설정
 
-현재 입력한 일기와 할 일은 브라우저 메모리에만 존재하며 새로고침하면 사라집니다.
+일기와 오늘 할 일은 백엔드를 통해 Firestore에 저장됩니다. 브라우저 화면의 입력 상태 자체는 새로고침하면 초기화됩니다.
+
+## 환경 변수와 빌드
+
+Netlify 프로젝트 환경변수에 Cloud Run 서비스의 공개 HTTPS Origin을 설정합니다.
+
+```dotenv
+API_BASE_URL=https://replace-with-cloud-run-service-url
+```
+
+Netlify는 `netlify.toml`에 따라 다음 명령으로 `dist/`를 생성합니다.
+
+```powershell
+npm run build
+```
 
 ## 로컬 실행
 
-별도 설치 없이 `index.html`을 브라우저에서 열 수 있습니다. 로컬 웹 서버를 사용하려면 이 디렉터리에서 다음 명령을 실행합니다.
+로컬 `.env`의 `API_BASE_URL`을 사용해 빌드한 다음 `dist/`를 실행합니다.
 
 ```powershell
-python -m http.server 4173
+npm run build:local
+python -m http.server 4173 --directory dist
 ```
 
 그런 다음 브라우저에서 `http://localhost:4173`을 엽니다.
