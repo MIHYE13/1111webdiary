@@ -530,6 +530,51 @@ input:disabled {
   font-size: 0.86rem;
 }
 
+.tomorrow-plan {
+  margin-bottom: 2.6rem;
+  padding: 1.35rem;
+  background: rgba(236, 233, 255, 0.46);
+  border: 1px solid rgba(103, 87, 217, 0.32);
+  border-radius: 1rem;
+}
+
+.tomorrow-plan h3 {
+  margin: 0;
+  color: var(--night);
+  font-size: 1rem;
+}
+
+.plan-label {
+  color: var(--violet-dark);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.plan-list {
+  margin: 1rem 0 0;
+}
+
+.plan-list > div {
+  padding: 0.75rem 0;
+  border-top: 1px solid rgba(103, 87, 217, 0.16);
+}
+
+.plan-list dt {
+  color: var(--violet-dark);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.plan-list dd {
+  margin: 0.2rem 0 0;
+  font-size: 0.88rem;
+}
+
+.plan-list ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
 .chat-status {
   padding: 0.25rem 0.55rem;
   background: var(--neutral);
@@ -542,11 +587,13 @@ input:disabled {
 }
 
 .chat-log {
+  max-height: 25rem;
   min-height: 10rem;
   margin: 0.8rem 0;
   padding: 1rem;
   background: rgba(235, 238, 248, 0.7);
   border-radius: 0.9rem;
+  overflow-y: auto;
 }
 
 .message {
@@ -571,14 +618,69 @@ input:disabled {
   font-size: 0.85rem;
 }
 
+.user-message {
+  margin-left: auto;
+  color: var(--white);
+  background: var(--night);
+  border-radius: 0.8rem 0.8rem 0.15rem;
+}
+
+.user-message .message-name {
+  color: var(--mint);
+}
+
+.angel-message {
+  border-left: 3px solid var(--violet);
+}
+
+.devil-message {
+  border-left: 3px solid var(--mint);
+}
+
+.facilitator-message,
+.system-message {
+  background: var(--neutral);
+}
+
+.system-message .message-name {
+  color: var(--muted-ink);
+}
+
 .chat-form {
+  display: block;
+}
+
+.energy-field {
+  margin-bottom: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.energy-field label {
+  color: var(--muted-ink);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.energy-field select {
+  padding: 0.4rem 1.8rem 0.4rem 0.65rem;
+  color: var(--ink);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 0.55rem;
+}
+
+.chat-input-row {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 0.55rem;
 }
 
 .chat-form input:disabled,
-.chat-form button:disabled {
+.chat-form button:disabled,
+.chat-form select:disabled {
   opacity: 0.62;
 }
 

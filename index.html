@@ -48,11 +48,11 @@
             <span>1</span>
             오늘 기록
           </li>
-          <li>
+          <li id="conversation-step">
             <span>2</span>
             내일 대화
           </li>
-          <li>
+          <li id="plan-step">
             <span>3</span>
             계획 정리
           </li>
@@ -137,15 +137,44 @@
             </p>
           </div>
 
+          <section id="tomorrow-plan" class="tomorrow-plan" hidden aria-labelledby="plan-title">
+            <div class="section-heading-row">
+              <h3 id="plan-title">정리된 내일 계획</h3>
+              <span class="plan-label">저장됨</span>
+            </div>
+            <dl class="plan-list">
+              <div>
+                <dt>반드시 할 일</dt>
+                <dd id="plan-must-do"></dd>
+              </div>
+              <div>
+                <dt>하면 좋은 일</dt>
+                <dd><ul id="plan-nice-to-do"></ul></dd>
+              </div>
+              <div>
+                <dt>쉬운 첫 행동</dt>
+                <dd id="plan-first-step"></dd>
+              </div>
+              <div>
+                <dt>즐거움 또는 회복</dt>
+                <dd id="plan-recovery"></dd>
+              </div>
+              <div>
+                <dt>저에너지 대안</dt>
+                <dd id="plan-low-energy"></dd>
+              </div>
+            </dl>
+          </section>
+
           <section class="chat-section" aria-labelledby="chat-title">
             <div class="section-heading-row">
               <h3 id="chat-title">내일을 정하는 대화</h3>
-              <span id="chat-status" class="chat-status">연결 대기</span>
+              <span id="chat-status" class="chat-status">기록 대기</span>
             </div>
 
             <div id="chat-log" class="chat-log" aria-live="polite">
               <div class="message assistant-message">
-                <span class="message-name">다음 장</span>
+                <span class="message-name">안내</span>
                 <p>
                   기록을 마치면 이곳에서 내일의 우선순위와 할 일을 함께 정리해요.
                 </p>
@@ -153,14 +182,26 @@
             </div>
 
             <form id="chat-form" class="chat-form">
+              <div class="energy-field">
+                <label for="energy-level">내일의 예상 에너지</label>
+                <select id="energy-level" disabled>
+                  <option value="low">낮음</option>
+                  <option value="medium" selected>보통</option>
+                  <option value="high">높음</option>
+                </select>
+              </div>
+              <div class="chat-input-row">
               <label class="sr-only" for="chat-input">대화 메시지</label>
               <input
                 id="chat-input"
                 type="text"
-                placeholder="백엔드 연결 후 대화를 시작할 수 있어요"
+                maxlength="500"
+                autocomplete="off"
+                placeholder="오늘 기록을 저장하면 대화를 시작할 수 있어요"
                 disabled
               />
-              <button type="submit" disabled aria-label="메시지 보내기">보내기</button>
+                <button id="chat-submit" type="submit" disabled aria-label="메시지 보내기">보내기</button>
+              </div>
             </form>
           </section>
         </section>
