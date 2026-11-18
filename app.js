@@ -5,6 +5,8 @@ const taskEmpty = document.querySelector("#task-empty");
 const taskCount = document.querySelector("#task-count");
 const diaryForm = document.querySelector("#diary-form");
 const diaryInput = document.querySelector("#diary-input");
+const diaryVoiceButton = document.querySelector("#diary-voice");
+const diaryVoiceStatus = document.querySelector("#diary-voice-status");
 const diaryCount = document.querySelector("#diary-count");
 const diaryError = document.querySelector("#diary-error");
 const planPlaceholder = document.querySelector("#plan-placeholder");
@@ -14,6 +16,8 @@ const chatLog = document.querySelector("#chat-log");
 const chatForm = document.querySelector("#chat-form");
 const chatInput = document.querySelector("#chat-input");
 const chatSubmit = document.querySelector("#chat-submit");
+const chatVoiceButton = document.querySelector("#chat-voice");
+const chatVoiceStatus = document.querySelector("#chat-voice-status");
 const energyLevel = document.querySelector("#energy-level");
 const todayStep = document.querySelector(".flow-nav li:first-child");
 const conversationStep = document.querySelector("#conversation-step");
@@ -24,6 +28,7 @@ const diarySubmit = document.querySelector("#diary-submit");
 const diarySubmitLabel = document.querySelector("#diary-submit-label");
 
 const apiBaseUrl = window.APP_CONFIG?.API_BASE_URL?.replace(/\/+$/, "");
+const speechRecognitionSupported = Boolean(window.speechInput?.isSupported);
 
 const tasks = [];
 let nextTaskId = 1;
@@ -105,6 +110,8 @@ function setCurrentStep(currentStep) {
 function setChatEnabled(isEnabled) {
   chatInput.disabled = !isEnabled || isSendingMessage;
   chatSubmit.disabled = !isEnabled || isSendingMessage;
+  chatVoiceButton.disabled =
+    !isEnabled || isSendingMessage || !speechRecognitionSupported;
   energyLevel.disabled = !isEnabled || isSendingMessage;
   chatForm.setAttribute("aria-busy", String(isSendingMessage));
 }
@@ -201,6 +208,7 @@ function setSubmittingDiary(isSubmitting) {
   isSubmittingDiary = isSubmitting;
   diarySubmit.disabled = isSubmitting || isDiarySaved;
   diaryForm.setAttribute("aria-busy", String(isSubmitting));
+  diaryVoiceButton.disabled = isSubmitting || !speechRecognitionSupported;
   if (isSubmitting) {
     diarySubmitLabel.textContent = "저장 중…";
   }
@@ -427,3 +435,13 @@ chatForm.addEventListener("submit", async (event) => {
 
 setDates();
 renderTasks();
+window.speechInput?.register({
+  button: diaryVoiceButton,
+  input: diaryInput,
+  status: diaryVoiceStatus,
+});
+window.speechInput?.register({
+  button: chatVoiceButton,
+  input: chatInput,
+  status: chatVoiceStatus,
+});

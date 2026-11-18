@@ -3,7 +3,7 @@ import { resolve } from "node:path";
 
 const rootDirectory = resolve(import.meta.dirname, "..");
 const outputDirectory = resolve(rootDirectory, "dist");
-const staticFiles = ["index.html", "styles.css", "app.js"];
+const staticFiles = ["index.html", "styles.css", "speech-input.js", "app.js"];
 
 function normalizeApiBaseUrl(value) {
   const normalized = value.trim().replace(/\/+$/, "");

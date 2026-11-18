@@ -10,6 +10,7 @@
     <title>다음 장 — 오늘을 적고, 내일을 정해요</title>
     <link rel="stylesheet" href="./styles.css" />
     <script src="./config.js" defer></script>
+    <script src="./speech-input.js" defer></script>
     <script src="./app.js" defer></script>
   </head>
   <body>
@@ -95,7 +96,19 @@
           <form id="diary-form" class="diary-form" novalidate>
             <div class="section-heading-row">
               <label for="diary-input">오늘의 일기</label>
-              <span id="diary-count" class="character-count">0 / 2,000</span>
+              <div class="input-tools">
+                <span id="diary-count" class="character-count">0 / 2,000</span>
+                <button
+                  id="diary-voice"
+                  class="voice-button"
+                  type="button"
+                  aria-controls="diary-input"
+                  aria-pressed="false"
+                >
+                  <span class="voice-dot" aria-hidden="true"></span>
+                  <span data-voice-label>말로 입력</span>
+                </button>
+              </div>
             </div>
             <textarea
               id="diary-input"
@@ -104,10 +117,13 @@
               minlength="10"
               maxlength="2000"
               placeholder="오늘 가장 마음에 남은 순간부터 시작해 보세요."
-              aria-describedby="diary-help diary-error"
+              aria-describedby="diary-help diary-voice-status diary-error"
             ></textarea>
             <p id="diary-help" class="privacy-note">
               기록은 Cloud Run 백엔드를 통해 Firestore에 저장됩니다.
+            </p>
+            <p id="diary-voice-status" class="voice-status" role="status">
+              마이크를 누르면 음성이 브라우저 제공자의 인식 서버에서 처리될 수 있습니다.
             </p>
             <p id="diary-error" class="field-error" role="alert"></p>
 
@@ -198,10 +214,25 @@
                 maxlength="500"
                 autocomplete="off"
                 placeholder="오늘 기록을 저장하면 대화를 시작할 수 있어요"
+                aria-describedby="chat-voice-status"
                 disabled
               />
+                <button
+                  id="chat-voice"
+                  class="voice-button"
+                  type="button"
+                  aria-controls="chat-input"
+                  aria-pressed="false"
+                  disabled
+                >
+                  <span class="voice-dot" aria-hidden="true"></span>
+                  <span data-voice-label>말로 입력</span>
+                </button>
                 <button id="chat-submit" type="submit" disabled aria-label="메시지 보내기">보내기</button>
               </div>
+              <p id="chat-voice-status" class="voice-status" role="status">
+                음성은 브라우저 인식 서버에서 처리될 수 있으며, 전송 전에 고칠 수 있어요.
+              </p>
             </form>
           </section>
         </section>
