@@ -409,9 +409,9 @@ chatForm.addEventListener("submit", async (event) => {
 
     if (reply.plan_ready) {
       renderPlan(reply.plan);
-      chatStatus.textContent = "계획 저장됨";
       showToast("내일의 계획을 정리하고 저장했어요.");
     }
+    chatStatus.textContent = "계속 대화 가능";
   } catch {
     appendMessage(
       "안내",
