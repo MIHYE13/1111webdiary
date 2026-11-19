@@ -1,4 +1,4 @@
-import { copyFile, cp, mkdir, writeFile } from "node:fs/promises";
+import { copyFile, mkdir, rm, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
 const rootDirectory = resolve(import.meta.dirname, "..");
@@ -23,6 +23,7 @@ if (!rawApiBaseUrl) {
 
 const apiBaseUrl = normalizeApiBaseUrl(rawApiBaseUrl);
 
+await rm(outputDirectory, { recursive: true, force: true });
 await mkdir(outputDirectory, { recursive: true });
 await Promise.all(
   staticFiles.map((fileName) =>
@@ -32,9 +33,6 @@ await Promise.all(
     ),
   ),
 );
-await cp(resolve(rootDirectory, "assets"), resolve(outputDirectory, "assets"), {
-  recursive: true,
-});
 await writeFile(
   resolve(outputDirectory, "config.js"),
   `window.APP_CONFIG = Object.freeze(${JSON.stringify({ API_BASE_URL: apiBaseUrl })});\n`,

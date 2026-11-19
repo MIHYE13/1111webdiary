@@ -5,7 +5,7 @@
 ## 현재 구현 범위
 
 - 반응형 다이어리 화면
-- 사용자가 제공한 크리스마스트리와 펭귄 이미지를 활용한 계절형 대문
+- 사용자가 제공한 이미지의 색채감을 재구성한 계절형 대문
 - 오늘 할 일 추가, 완료, 삭제
 - 일기 입력 및 글자 수 표시
 - 일기와 대화 입력란의 한국어 마이크 음성 입력
@@ -34,7 +34,7 @@ API_BASE_URL=https://replace-with-cloud-run-service-url
 
 Netlify는 `netlify.toml`에 따라 다음 명령으로 `dist/`를 생성합니다.
 
-크리스마스 대문 이미지는 `assets/christmas-tree.png`와 `assets/christmas-penguins.png`에 있으며 빌드 시 `dist/assets/`로 복사됩니다. 워터마크가 포함된 세 번째 이미지는 사용하지 않습니다.
+크리스마스 대문은 제공된 이미지의 남색, 솔잎 초록, 장식 빨강, 금색과 라벤더 색채를 CSS 일러스트로 재구성합니다. 원본 이미지와 워터마크가 포함된 세 번째 이미지는 배포 파일에 포함하지 않습니다.
 
 ```powershell
 npm run build

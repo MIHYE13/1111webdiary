@@ -22,10 +22,15 @@
   --violet-light: #8a7ee4;
   --holly: #245b3a;
   --holly-dark: #19452b;
+  --pine-light: #2f6c43;
+  --pine-soft: #376f45;
+  --wood: #8b6148;
   --berry: #b33a45;
   --starlight: #d6a33c;
   --winter-sky: #e7eef3;
   --frost: #f4f8f7;
+  --bauble-purple: #8a72b8;
+  --ice-blue: #9bcbd2;
   --shadow: 0 28px 80px rgba(35, 43, 77, 0.16);
   --sans: "Pretendard Variable", Pretendard, "Noto Sans KR", "Apple SD Gothic Neo",
     sans-serif;
@@ -200,21 +205,145 @@ select:disabled {
   font-weight: 800;
 }
 
-.hero-art {
+.winter-illustration {
   position: relative;
   z-index: 1;
-  width: min(100%, 25rem);
-  margin: 0 0 -8rem auto;
-  align-self: end;
+  min-height: 30rem;
+  align-self: stretch;
+  display: grid;
+  place-items: center;
 }
 
-.hero-art img {
-  width: 100%;
-  height: auto;
+.winter-illustration::before {
+  position: absolute;
+  width: 22rem;
+  height: 22rem;
+  border: 1px solid rgba(169, 213, 192, 0.34);
+  border-radius: 50%;
+  content: "";
+}
+
+.paper-tree {
+  position: relative;
+  z-index: 1;
+  width: 22rem;
+  height: 29rem;
+}
+
+.tree-star {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 50%;
+  color: var(--starlight);
+  font-size: 4.2rem;
+  line-height: 1;
+  transform: translateX(-50%);
+}
+
+.tree-bough {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  display: block;
+  background: var(--holly);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  transform: translateX(-50%);
+}
+
+.bough-one {
+  top: 3.7rem;
+  width: 8.5rem;
+  height: 7rem;
+}
+
+.bough-two {
+  top: 7.2rem;
+  width: 13rem;
+  height: 9rem;
+  background: var(--pine-light);
+}
+
+.bough-three {
+  top: 11.5rem;
+  width: 17.5rem;
+  height: 10rem;
+}
+
+.bough-four {
+  top: 16rem;
+  width: 22rem;
+  height: 11.5rem;
+  background: var(--pine-soft);
+}
+
+.tree-trunk {
+  position: absolute;
+  z-index: 1;
+  bottom: 0.9rem;
+  left: 50%;
+  width: 2.8rem;
+  height: 5rem;
+  background: var(--wood);
+  transform: translateX(-50%);
+}
+
+.tree-ornament {
+  position: absolute;
+  z-index: 4;
+  width: 1.35rem;
+  height: 1.35rem;
+  display: block;
+  border: 0.18rem solid rgba(255, 255, 255, 0.56);
+  border-radius: 50%;
+}
+
+.ornament-one {
+  top: 9rem;
+  left: 8rem;
+  background: var(--berry);
+}
+
+.ornament-two {
+  top: 12.3rem;
+  right: 7.4rem;
+  background: var(--starlight);
+}
+
+.ornament-three {
+  top: 15.5rem;
+  left: 5.2rem;
+  background: var(--bauble-purple);
+}
+
+.ornament-four {
+  top: 18.5rem;
+  right: 5rem;
+  background: var(--ice-blue);
+}
+
+.ornament-five {
+  top: 21rem;
+  left: 9.8rem;
+  background: var(--starlight);
+}
+
+.ornament-six {
+  top: 23rem;
+  right: 8.7rem;
+  background: var(--berry);
+}
+
+.snow-bank {
+  position: absolute;
+  z-index: 3;
+  right: 0;
+  bottom: 0.3rem;
+  left: 0;
+  height: 2.2rem;
   display: block;
   background: var(--frost);
-  border: 0.45rem solid var(--frost);
-  border-radius: 0.75rem 0.75rem 0 0;
+  border-radius: 50% 50% 0.7rem 0.7rem;
 }
 
 .intro-date {
@@ -867,12 +996,73 @@ select:disabled {
   color: var(--muted-ink);
 }
 
-.christmas-finale > img {
+.ornament-garland {
   position: absolute;
-  right: -2rem;
-  bottom: -3.5rem;
-  width: min(58rem, 70vw);
-  height: auto;
+  right: clamp(2rem, 6vw, 6rem);
+  bottom: 2.2rem;
+  width: min(33rem, 44vw);
+  height: 10rem;
+}
+
+.garland-line {
+  position: absolute;
+  top: 1.8rem;
+  right: 0;
+  left: 0;
+  border-top: 2px solid var(--holly);
+  transform: rotate(-4deg);
+}
+
+.garland-light {
+  position: absolute;
+  width: 2.3rem;
+  height: 3rem;
+  display: block;
+  border: 0.24rem solid var(--white);
+  border-radius: 50% 50% 45% 45%;
+  box-shadow: 0 0 0 1px rgba(24, 32, 58, 0.08);
+}
+
+.garland-light::before {
+  position: absolute;
+  top: -0.7rem;
+  left: 50%;
+  width: 0.85rem;
+  height: 0.65rem;
+  background: var(--holly);
+  border-radius: 0.2rem;
+  content: "";
+  transform: translateX(-50%);
+}
+
+.light-one {
+  top: 2rem;
+  left: 2%;
+  background: var(--berry);
+}
+
+.light-two {
+  top: 3.1rem;
+  left: 23%;
+  background: var(--starlight);
+}
+
+.light-three {
+  top: 3.7rem;
+  left: 45%;
+  background: var(--bauble-purple);
+}
+
+.light-four {
+  top: 3.1rem;
+  left: 67%;
+  background: var(--ice-blue);
+}
+
+.light-five {
+  top: 1.8rem;
+  left: 88%;
+  background: var(--berry);
 }
 
 .sr-only {
@@ -901,9 +1091,8 @@ select:disabled {
     padding-bottom: 0;
   }
 
-  .hero-art {
-    width: min(80%, 23rem);
-    margin: 0 auto -7rem;
+  .winter-illustration {
+    min-height: 28rem;
   }
 
   .intro h1 {
@@ -934,10 +1123,10 @@ select:disabled {
     min-height: 30rem;
   }
 
-  .christmas-finale > img {
+  .ornament-garland {
     right: 50%;
-    bottom: -1.5rem;
-    width: 44rem;
+    bottom: 0.7rem;
+    width: min(32rem, 88%);
     max-width: none;
     transform: translateX(50%);
   }
@@ -975,9 +1164,10 @@ select:disabled {
     font-size: 0.94rem;
   }
 
-  .hero-art {
-    width: min(92%, 20rem);
-    margin-bottom: -4rem;
+  .winter-illustration {
+    min-height: 25rem;
+    transform: scale(0.82);
+    transform-origin: center bottom;
   }
 
   .flow-nav li {
@@ -1009,9 +1199,8 @@ select:disabled {
     padding: 1.5rem;
   }
 
-  .christmas-finale > img {
-    bottom: -0.5rem;
-    width: 37rem;
+  .ornament-garland {
+    width: calc(100% - 3rem);
   }
 
 }
