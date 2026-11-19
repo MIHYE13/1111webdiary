@@ -20,6 +20,12 @@
   --neutral: #eceff6;
   --divider: #c7cce0;
   --violet-light: #8a7ee4;
+  --holly: #245b3a;
+  --holly-dark: #19452b;
+  --berry: #b33a45;
+  --starlight: #d6a33c;
+  --winter-sky: #e7eef3;
+  --frost: #f4f8f7;
   --shadow: 0 28px 80px rgba(35, 43, 77, 0.16);
   --sans: "Pretendard Variable", Pretendard, "Noto Sans KR", "Apple SD Gothic Neo",
     sans-serif;
@@ -38,10 +44,7 @@ body {
   min-width: 320px;
   margin: 0;
   color: var(--ink);
-  background:
-    radial-gradient(circle at 8% 18%, rgba(169, 213, 192, 0.34), transparent 26rem),
-    radial-gradient(circle at 92% 24%, rgba(103, 87, 217, 0.16), transparent 30rem),
-    var(--paper-blue);
+  background: var(--winter-sky);
   font-family: var(--sans);
   line-height: 1.6;
 }
@@ -110,7 +113,7 @@ select:disabled {
   display: grid;
   place-items: center;
   color: var(--white);
-  background: var(--night);
+  background: var(--berry);
   border-radius: 50% 50% 50% 0;
   font-family: var(--serif);
   transform: rotate(-8deg);
@@ -156,15 +159,67 @@ select:disabled {
 
 .intro {
   display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(18rem, 0.7fr);
-  gap: clamp(2rem, 6vw, 6rem);
-  align-items: end;
+  grid-template-columns: minmax(0, 1fr) minmax(17rem, 0.62fr);
+  gap: clamp(1.5rem, 5vw, 4.5rem);
+  align-items: center;
   margin: 1.5rem 0 2.25rem;
+}
+
+.seasonal-hero {
+  position: relative;
+  min-height: 35rem;
+  padding: clamp(2rem, 5vw, 4.5rem);
+  overflow: hidden;
+  color: var(--white);
+  background: var(--night);
+  border: 1px solid rgba(214, 163, 60, 0.42);
+  border-radius: 1.35rem;
+  box-shadow: 0 28px 80px rgba(24, 32, 58, 0.2);
+}
+
+.seasonal-hero::before {
+  position: absolute;
+  top: 1.7rem;
+  left: 2rem;
+  color: var(--starlight);
+  font-size: 1.2rem;
+  letter-spacing: 1.15rem;
+  content: "✦ · ✦";
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 1;
+  align-self: center;
+}
+
+.season-label {
+  margin: 0 0 1.7rem;
+  color: var(--mint);
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.hero-art {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 25rem);
+  margin: 0 0 -8rem auto;
+  align-self: end;
+}
+
+.hero-art img {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: var(--frost);
+  border: 0.45rem solid var(--frost);
+  border-radius: 0.75rem 0.75rem 0 0;
 }
 
 .intro-date {
   margin: 0 0 0.45rem;
-  color: var(--violet-dark);
+  color: var(--starlight);
   font-family: var(--serif);
   font-size: clamp(1.35rem, 3vw, 2.2rem);
   font-style: italic;
@@ -173,7 +228,7 @@ select:disabled {
 .intro h1 {
   max-width: 15ch;
   margin: 0;
-  color: var(--night);
+  color: var(--white);
   font-size: clamp(2.5rem, 6vw, 5.3rem);
   line-height: 1.07;
   letter-spacing: -0.065em;
@@ -181,8 +236,8 @@ select:disabled {
 
 .intro-copy {
   max-width: 36rem;
-  margin: 0 0 0.55rem;
-  color: var(--muted-ink);
+  margin: 1.5rem 0 0;
+  color: rgba(255, 255, 255, 0.76);
   font-size: clamp(0.98rem, 1.5vw, 1.12rem);
 }
 
@@ -228,13 +283,13 @@ select:disabled {
 }
 
 .flow-nav li.is-current {
-  color: var(--violet-dark);
+  color: var(--holly);
 }
 
 .flow-nav li.is-current span {
   color: var(--white);
-  background: var(--violet);
-  border-color: var(--violet);
+  background: var(--berry);
+  border-color: var(--berry);
 }
 
 .diary-spread {
@@ -243,7 +298,7 @@ select:disabled {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   overflow: hidden;
   background: var(--paper);
-  border: 1px solid rgba(40, 51, 88, 0.1);
+  border: 1px solid rgba(36, 91, 58, 0.22);
   border-radius: 1.35rem;
   box-shadow: var(--shadow);
 }
@@ -272,9 +327,7 @@ select:disabled {
 }
 
 .tomorrow-page {
-  background:
-    radial-gradient(circle at 100% 0, rgba(169, 213, 192, 0.25), transparent 24rem),
-    var(--paper);
+  background: var(--frost);
 }
 
 .page-heading,
@@ -293,7 +346,7 @@ select:disabled {
 
 .page-kicker {
   margin: 0 0 0.15rem;
-  color: var(--violet-dark);
+  color: var(--berry);
   font-weight: 800;
   font-size: 0.8rem;
 }
@@ -307,7 +360,7 @@ select:disabled {
 }
 
 .page-number {
-  color: rgba(40, 51, 88, 0.17);
+  color: rgba(214, 163, 60, 0.34);
   font-family: var(--serif);
   font-size: 3.2rem;
   line-height: 1;
@@ -520,14 +573,14 @@ select:disabled {
   align-items: center;
   justify-content: space-between;
   color: var(--white);
-  background: var(--night);
+  background: var(--holly);
   border: 0;
   border-radius: 0.8rem;
   font-weight: 800;
 }
 
 .primary-button:hover {
-  background: var(--night-hover);
+  background: var(--holly-dark);
 }
 
 .primary-button span {
@@ -761,7 +814,7 @@ select:disabled {
   max-width: min(24rem, calc(100% - 2.5rem));
   padding: 0.85rem 1rem;
   color: var(--white);
-  background: var(--night);
+  background: var(--holly);
   border-radius: 0.75rem;
   box-shadow: 0 14px 38px rgba(24, 32, 58, 0.24);
   opacity: 0;
@@ -773,6 +826,53 @@ select:disabled {
 .toast.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.christmas-finale {
+  position: relative;
+  min-height: 19rem;
+  margin-top: 1.5rem;
+  padding: clamp(2rem, 5vw, 4rem);
+  overflow: hidden;
+  background: var(--frost);
+  border: 1px solid rgba(36, 91, 58, 0.22);
+  border-radius: 1.35rem;
+}
+
+.finale-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 29rem;
+}
+
+.finale-kicker {
+  margin: 0 0 0.3rem;
+  color: var(--berry);
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.finale-copy h2 {
+  max-width: 12ch;
+  margin: 0;
+  color: var(--night);
+  font-size: clamp(1.8rem, 4vw, 3.2rem);
+  line-height: 1.16;
+  letter-spacing: -0.045em;
+}
+
+.finale-copy > p:last-child {
+  max-width: 31rem;
+  margin: 1rem 0 0;
+  color: var(--muted-ink);
+}
+
+.christmas-finale > img {
+  position: absolute;
+  right: -2rem;
+  bottom: -3.5rem;
+  width: min(58rem, 70vw);
+  height: auto;
 }
 
 .sr-only {
@@ -797,6 +897,15 @@ select:disabled {
     gap: 1.25rem;
   }
 
+  .seasonal-hero {
+    padding-bottom: 0;
+  }
+
+  .hero-art {
+    width: min(80%, 23rem);
+    margin: 0 auto -7rem;
+  }
+
   .intro h1 {
     font-size: clamp(2.5rem, 11vw, 4.2rem);
   }
@@ -819,6 +928,18 @@ select:disabled {
     border: 1px solid rgba(40, 51, 88, 0.1);
     border-radius: 1.1rem;
     box-shadow: 0 18px 48px rgba(35, 43, 77, 0.1);
+  }
+
+  .christmas-finale {
+    min-height: 30rem;
+  }
+
+  .christmas-finale > img {
+    right: 50%;
+    bottom: -1.5rem;
+    width: 44rem;
+    max-width: none;
+    transform: translateX(50%);
   }
 }
 
@@ -845,8 +966,18 @@ select:disabled {
     margin-top: 0.5rem;
   }
 
+  .seasonal-hero {
+    min-height: 39rem;
+    padding-inline: 1.5rem;
+  }
+
   .intro-copy {
     font-size: 0.94rem;
+  }
+
+  .hero-art {
+    width: min(92%, 20rem);
+    margin-bottom: -4rem;
   }
 
   .flow-nav li {
@@ -871,6 +1002,16 @@ select:disabled {
     align-items: flex-end;
     flex-direction: column-reverse;
     gap: 0.25rem;
+  }
+
+  .christmas-finale {
+    min-height: 27rem;
+    padding: 1.5rem;
+  }
+
+  .christmas-finale > img {
+    bottom: -0.5rem;
+    width: 37rem;
   }
 
 }
